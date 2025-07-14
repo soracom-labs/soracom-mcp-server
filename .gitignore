@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.log
+.env
+.DS_Store
+.vscode
+.npmrc
+
+# Standalone build artifacts
+standalone/
+standalone-package/
+*.tgz
+
+# Test directories
+test-package/
+coverage/
