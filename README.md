@@ -92,6 +92,41 @@ That's it! No installation needed - npx will download and run the server automat
 
 For enhanced security, we recommend creating a SAM (SORACOM Access Management) user with permissions limited to only the necessary API operations, rather than using your root user credentials. Generate the AuthKey ID and Token from this SAM user for use with this MCP server.
 
+#### Using with Docker
+
+You can also run the MCP server using Docker. Build the image with the following command:
+
+```bash
+docker build -t soracom-mcp-server:latest .
+```
+
+Settings are like below:
+
+```json
+{
+  "mcpServers": {
+    "soracom": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "-e",
+        "SORACOM_AUTH_KEY_ID",
+        "-e",
+        "SORACOM_AUTH_KEY",
+        "soracom-mcp-server:latest"
+      ],
+      "env": {
+        "SORACOM_AUTH_KEY_ID": "your-key-id",
+        "SORACOM_AUTH_KEY": "your-token",
+        "SORACOM_COVERAGE_TYPE": "jp"
+      }
+    }
+  }
+}
+```
+
 ## Usage
 
 ### Command Naming Convention
